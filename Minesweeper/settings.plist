@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>levels</key>
+	<dict>
+		<key>beginner</key>
+		<dict>
+			<key>rows</key>
+			<integer>9</integer>
+			<key>columns</key>
+			<integer>9</integer>
+			<key>mines</key>
+			<integer>10</integer>
+		</dict>
+		<key>intermediate</key>
+		<dict>
+			<key>rows</key>
+			<integer>16</integer>
+			<key>columns</key>
+			<integer>16</integer>
+			<key>mines</key>
+			<integer>40</integer>
+		</dict>
+		<key>expert</key>
+		<dict>
+			<key>rows</key>
+			<integer>16</integer>
+			<key>columns</key>
+			<integer>30</integer>
+			<key>mines</key>
+			<integer>99</integer>
+		</dict>
+	</dict>
+	<key>tile</key>
+	<dict>
+		<key>height</key>
+		<integer>31</integer>
+		<key>width</key>
+		<integer>31</integer>
+	</dict>
+</dict>
+</plist>
