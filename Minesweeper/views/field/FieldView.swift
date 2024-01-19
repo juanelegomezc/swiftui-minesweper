@@ -8,20 +8,24 @@
 import SwiftUI
 
 struct FieldView: View {
-    @StateObject var field: Field
+    
+    @Environment(Game.self) private var game
+    
+    #if os(macOS)
     @State private var hover: Bool = false
+    #endif
     
     var body: some View {
+        let minWidth = CGFloat(self.game.settings.tile.width)
+        let minHeight = CGFloat(self.game.settings.tile.height)
         VStack(spacing: 0) {
-            ForEach(0..<self.field.rows, id: \.self) { y in
+            ForEach(self._getRows(), id: \.hashValue) { row in
                 HStack(spacing: 0) {
-                    ForEach(0..<self.field.cols, id: \.self) { x in
-                        TileView(
-                            tile: self._getTile(x: x, y: y, cols: field.cols)
-                        )
+                    ForEach(row, id: \.hashValue) { tile in
+                        tile
                             .frame(
-                                minWidth: self.minWidth,
-                                minHeight: self.minHeight
+                                minWidth: minWidth,
+                                minHeight: minHeight
                             )
                             #if os(macOS)
                             .onHover(perform: {hovering in
@@ -35,32 +39,37 @@ struct FieldView: View {
                             #endif
                     }
                 }
-                .frame(minHeight: 31)
             }
         }
         .border(Color(fromHex: "#444"))
     }
     
-    private var settings: Settings {
-        get { Settings.shared }
+    private func _getRows() -> [[TileView]] {
+        var rows: [[TileView]] = []
+        (0..<self.game.field.rows).forEach { y in
+            var tiles: [TileView] = []
+            (0..<self.game.field.cols).forEach { x in
+                tiles.append(self._getTileViewAt(x, y))
+            }
+            rows.append(tiles)
+        }
+        return rows
     }
     
-    private var minWidth: CGFloat {
-        get { CGFloat(self.settings.tile.width) }
+    private func _getTileViewAt(_ x: Int, _ y: Int) -> TileView {
+        return TileView(
+            pos: self._getPos(x: x, y: y, cols: self.game.field.cols)
+        )
     }
     
-    private var minHeight: CGFloat {
-        get { CGFloat(self.settings.tile.width) }
-    }
-    
-    private func _getTile(x: Int, y: Int, cols: Int) -> Tile {
-        let pos = y * cols + x
-        return self.field[pos]!
+    private func _getPos(x: Int, y: Int, cols: Int) -> Int {
+        return y * cols + x
     }
 }
 
 struct FieldView_Previews: PreviewProvider {
     static var previews: some View {
-        FieldView(field: Field(level: Level.BEGINNER))
+        FieldView()
+            .environment(Game())
     }
 }

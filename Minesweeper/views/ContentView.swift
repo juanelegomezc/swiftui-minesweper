@@ -8,26 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.colorScheme) private var colorScheme
-    private var field: Field = Field(level: Level.EXPERT)
+    
+    @Environment(
+        Game.self
+    ) private var game
+    @Environment(
+        \.colorScheme
+    ) private var colorScheme
+    
+    private var _color: String {
+        colorScheme == .dark ? DARK_MODE_BACKGROUND_COLOR : LIGHT_MODE_BACKGROUND_COLOR
+    }
+    
     var body: some View {
-        Color(fromHex: colorScheme == .dark ? "#333" : "#bfbfbf")
-            .ignoresSafeArea()
-            .overlay(
-                VStack {
-                    TopBarView()
-                    Spacer()
-                    ScrollView([.horizontal, .vertical] ,showsIndicators: false) {
-                        FieldView(field: field)
+        Color(
+            fromHex: self._color
+        )
+        .ignoresSafeArea()
+        .overlay(
+            VStack {
+                TopBarView()
+                ScrollView {
+                    VStack {
+                        FieldView()
                     }
-                    Spacer()
                 }
-            )
+            }
+        )
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environment(
+                Game(
+                    level: Level.BEGINNER
+                )
+            )
     }
 }

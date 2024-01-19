@@ -29,20 +29,25 @@ struct PerimeterIterator: IteratorProtocol {
     }
 }
 
-class Perimeter: Sequence {
-    private var _topLeft: Tile?
-    private var _top: Tile?
-    private var _topRight: Tile?
-    private var _left: Tile?
-    private var _right: Tile?
-    private var _bottomLeft: Tile?
-    private var _bottom: Tile?
-    private var _bottomRight: Tile?
+struct Perimeter: Sequence {
     
-    private var _perimeter: [Tile?]
+    private var _perimeter: [Tile]
     private var _sum: Int
     
-    var sum: Int { get { _sum } }
+    var sum: Int { _sum }
+    
+    private var coordinates: Dictionary<String, (_ pos: Int, _ columns: Int) -> Int> {
+        return [
+            "topLeft":      self._getTopLeftPos,
+            "top":          self._getTopPos,
+            "topRight":     self._getTopRightPos,
+            "left":         self._getLeftPos,
+            "right":        self._getRightPos,
+            "bottomLeft":   self._getBottomLeftPos,
+            "bottom":       self._getBottomPos,
+            "bottomRight":  self._getBottomRightPos,
+        ]
+    }
     
     init() {
         self._sum = 0
@@ -52,34 +57,21 @@ class Perimeter: Sequence {
     init(pos: Int, field: Field) {
         self._sum = 0
         self._perimeter = []
-        self._topLeft = field[self._getTopLeftPos(pos, field.cols)]
-        self._top = field[self._getTopPos(pos, field.cols)]
-        self._topRight = field[self._getTopRightPos(pos, field.cols)]
-        self._left = field[self._getLeftPos(pos, field.cols)]
-        self._right = field[self._getRightPos(pos, field.cols)]
-        self._bottomLeft = field[self._getBottomLeft(pos, field.cols)]
-        self._bottom = field[self._getBottomPos(pos, field.cols)]
-        self._bottomRight = field[self._getBottomRightPos(pos, field.cols)]
-        self._perimeter = [
-            self._topLeft,
-            self._top,
-            self._topRight,
-            self._left,
-            self._right,
-            self._bottomLeft,
-            self._bottom,
-            self._bottomRight
-        ]
-        self._sum = self._perimeter.filter { $0?.isMined ?? false }.reduce(0, {sum, _ in sum + 1})
+        self.coordinates.forEach { element in
+            let getter = element.value
+            let tile = field[getter(pos, field.cols)]
+            if tile != nil {
+                self._perimeter.append(tile!)
+            }
+        }
+        self._sum = self._perimeter.filter { $0.isMined }.reduce(0, {sum, _ in sum + 1})
     }
     
     subscript(index: Int) -> Tile? {
-        get {
-            guard index > 0 && index < self._perimeter.count else {
-                return nil
-            }
-            return self._perimeter[index]
+        guard index > 0 && index < self._perimeter.count else {
+            return nil
         }
+        return self._perimeter[index]
     }
     
     func makeIterator() -> PerimeterIterator {
@@ -118,7 +110,7 @@ class Perimeter: Sequence {
         return pos + 1
     }
 
-    private func _getBottomLeft(_ pos: Int, _ columns: Int) -> Int {
+    private func _getBottomLeftPos(_ pos: Int, _ columns: Int) -> Int {
         guard pos % columns != 0 else {
             return -1
         }

@@ -11,13 +11,13 @@ import SwiftUI
 extension Color {
     
     init(fromHex: String) {
-        let defaultColor: CGColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
+        let defaultColor: Color = .white
         var cleanedHex = fromHex
         if cleanedHex.starts(with: "#") {
             cleanedHex = String(fromHex[fromHex.index(fromHex.startIndex , offsetBy: 1)..<fromHex.endIndex])
         }
         guard cleanedHex.count == 3 || cleanedHex.count == 6 else {
-            self.init(cgColor: defaultColor)
+            self.init(defaultColor)
             return
         }
         var hex: [UInt32] = []

@@ -7,8 +7,14 @@
 
 import SwiftUI
 
-struct LCDDigitView: View {
+struct LCDDigitView: View, Hashable {
+    var pos: Int
     var value: Int
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(pos)
+    }
+    
     var body: some View {
         Image("d\(value)")
             .resizable(resizingMode: .stretch)
@@ -18,7 +24,7 @@ struct LCDDigitView: View {
 
 struct LCDDigitView_Previews: PreviewProvider {
     static var previews: some View {
-        LCDDigitView(value: 0)
-        LCDDigitView(value: 2)
+        LCDDigitView(pos: 0, value: 0)
+        LCDDigitView(pos: 0, value: 2)
     }
 }

@@ -11,11 +11,17 @@ struct LCDDisplayView: View {
     var length: Int
     var value: Int
     
+    var digits: [LCDDigitView] {
+        var digits: [LCDDigitView] = []
+        (0..<self.length).forEach { index in
+            digits.append(LCDDigitView(pos: self.length - index - 1, value: self.getDigitValue(pos: index)))
+        };
+        return digits
+    }
+    
     var body: some View {
         HStack {
-            ForEach((0...(length - 1)), id: \.self) {index in
-                LCDDigitView(value: self.getDigitValue(pos: index))
-            }
+            ForEach(digits, id: \.hashValue) { $0 }
         }
     }
     
@@ -25,12 +31,13 @@ struct LCDDisplayView: View {
         if self.length - pos > strValue.count {
             return 0
         }
-        return strValue[strValue.index(strValue.startIndex, offsetBy: pos - pad)].wholeNumberValue ?? 0
+        let startIndex = strValue.startIndex
+        return strValue[strValue.index(startIndex, offsetBy: pos - pad)].wholeNumberValue ?? 0
     }
 }
 
 struct LCDDisplayView_Previews: PreviewProvider {
     static var previews: some View {
-        LCDDisplayView(length: 3, value: 879)
+        LCDDisplayView(length: 3, value: 321)
     }
 }

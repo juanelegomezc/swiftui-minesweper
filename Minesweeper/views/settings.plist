@@ -38,6 +38,8 @@
 		<integer>31</integer>
 		<key>width</key>
 		<integer>31</integer>
+		<key>backgroundColor</key>
+		<string>#bfbfbf</string>
 	</dict>
 </dict>
 </plist>

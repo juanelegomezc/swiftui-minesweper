@@ -8,13 +8,37 @@
 import SwiftUI
 
 struct FaceView: View {
+    
+    @Environment(Game.self) private var game
+    
     var body: some View {
-        Button("🙂", action: {})
+        ZStack {
+            Image("tile")
+                .resizable()
+                .frame(width: 45, height: 35)
+            Button(self._face) {
+                self.game.newGame()
+            }
+        }
+    }
+    
+    private var _face: String {
+        get {
+            if self.game.finished {
+                if self.game.won {
+                    return "😎"
+                } else {
+                    return "😣"
+                }
+            }
+            return "🙂"
+        }
     }
 }
 
 struct FaceView_Previews: PreviewProvider {
     static var previews: some View {
         FaceView()
+            .environment(Game())
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF281B8B2AC8D2D60078C782 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF281B8A2AC8D2D60078C782 /* Constants.swift */; };
 		AF6C3E6D2A9BA9E800B937E4 /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C3E6C2A9BA9E800B937E4 /* MinesweeperApp.swift */; };
 		AF6C3E6F2A9BA9E800B937E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C3E6E2A9BA9E800B937E4 /* ContentView.swift */; };
 		AF6C3E712A9BA9E900B937E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF6C3E702A9BA9E900B937E4 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		AFA34F532A9EA5FE0099D2D9 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFA34F522A9EA5FE0099D2D9 /* settings.plist */; };
 		AFA34F552A9F71180099D2D9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA34F542A9F71180099D2D9 /* Settings.swift */; };
 		AFA34F572A9FAFAD0099D2D9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA34F562A9FAFAD0099D2D9 /* Color.swift */; };
+		AFE395812B544180001CEE65 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE395802B544180001CEE65 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF281B8A2AC8D2D60078C782 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AF6C3E692A9BA9E800B937E4 /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF6C3E6C2A9BA9E800B937E4 /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
 		AF6C3E6E2A9BA9E800B937E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		AFA34F522A9EA5FE0099D2D9 /* settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		AFA34F542A9F71180099D2D9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		AFA34F562A9FAFAD0099D2D9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		AFE395802B544180001CEE65 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,10 +125,11 @@
 		AF6C3E6B2A9BA9E800B937E4 /* Minesweeper */ = {
 			isa = PBXGroup;
 			children = (
-				AF6C3EA02A9BD9C700B937E4 /* views */,
+				AF281B8A2AC8D2D60078C782 /* Constants.swift */,
+				AFEE834C2AA0E78D00D4E8F6 /* settings */,
 				AF6C3E972A9BAA3200B937E4 /* Models */,
+				AF6C3EA02A9BD9C700B937E4 /* views */,
 				AF6C3E6C2A9BA9E800B937E4 /* MinesweeperApp.swift */,
-				AFA34F522A9EA5FE0099D2D9 /* settings.plist */,
 				AF6C3E702A9BA9E900B937E4 /* Assets.xcassets */,
 				AF6C3E722A9BA9E900B937E4 /* Minesweeper.entitlements */,
 				AF6C3E732A9BA9E900B937E4 /* Preview Content */,
@@ -160,12 +165,12 @@
 		AF6C3E972A9BAA3200B937E4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AFEE834D2AA0E7CC00D4E8F6 /* extensions */,
+				AFE395802B544180001CEE65 /* Game.swift */,
 				AF6C3E982A9BAAA500B937E4 /* Field.swift */,
 				AF6C3E9A2A9BABD000B937E4 /* Tile.swift */,
 				AF6C3E9C2A9BAC9000B937E4 /* Perimeter.swift */,
 				AF6C3E9E2A9BAE6900B937E4 /* Level.swift */,
-				AFA34F542A9F71180099D2D9 /* Settings.swift */,
-				AFA34F562A9FAFAD0099D2D9 /* Color.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -202,10 +207,28 @@
 		AF6C3EA52A9C1C8400B937E4 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				AF6C3EA62A9C1CC100B937E4 /* LCDDisplayView.swift */,
 				AF6C3EAA2A9C1F7200B937E4 /* LCDDigitView.swift */,
+				AF6C3EA62A9C1CC100B937E4 /* LCDDisplayView.swift */,
 			);
 			path = common;
+			sourceTree = "<group>";
+		};
+		AFEE834C2AA0E78D00D4E8F6 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				AFA34F522A9EA5FE0099D2D9 /* settings.plist */,
+				AFA34F542A9F71180099D2D9 /* Settings.swift */,
+			);
+			name = settings;
+			path = views;
+			sourceTree = "<group>";
+		};
+		AFEE834D2AA0E7CC00D4E8F6 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AFA34F562A9FAFAD0099D2D9 /* Color.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +295,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					AF6C3E682A9BA9E800B937E4 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -344,6 +367,7 @@
 				AF6C3E6F2A9BA9E800B937E4 /* ContentView.swift in Sources */,
 				AF6C3E9D2A9BAC9000B937E4 /* Perimeter.swift in Sources */,
 				AF6C3EA72A9C1CC100B937E4 /* LCDDisplayView.swift in Sources */,
+				AF281B8B2AC8D2D60078C782 /* Constants.swift in Sources */,
 				AF6C3E6D2A9BA9E800B937E4 /* MinesweeperApp.swift in Sources */,
 				AF6C3EAF2A9C2A3A00B937E4 /* FieldView.swift in Sources */,
 				AFA34F552A9F71180099D2D9 /* Settings.swift in Sources */,
@@ -353,6 +377,7 @@
 				AF6C3E9B2A9BABD000B937E4 /* Tile.swift in Sources */,
 				AF6C3EB12A9C2E2B00B937E4 /* TileView.swift in Sources */,
 				AF6C3EAD2A9C293600B937E4 /* FaceView.swift in Sources */,
+				AFE395812B544180001CEE65 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,9 +447,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -480,9 +507,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -506,6 +535,7 @@
 				CODE_SIGN_ENTITLEMENTS = Minesweeper/Minesweeper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -517,12 +547,11 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev-juanelegomez.Minesweeper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -542,6 +571,7 @@
 				CODE_SIGN_ENTITLEMENTS = Minesweeper/Minesweeper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Minesweeper/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -553,12 +583,11 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev-juanelegomez.Minesweeper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -577,6 +606,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -599,6 +629,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -620,6 +651,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -641,6 +673,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
