@@ -28,6 +28,7 @@
 		AFA34F532A9EA5FE0099D2D9 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFA34F522A9EA5FE0099D2D9 /* settings.plist */; };
 		AFA34F552A9F71180099D2D9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA34F542A9F71180099D2D9 /* Settings.swift */; };
 		AFA34F572A9FAFAD0099D2D9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA34F562A9FAFAD0099D2D9 /* Color.swift */; };
+		AFCD91262B5D720B00083EE5 /* RightClickableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD91252B5D720B00083EE5 /* RightClickableView.swift */; };
 		AFE395812B544180001CEE65 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE395802B544180001CEE65 /* Game.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		AFA34F522A9EA5FE0099D2D9 /* settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		AFA34F542A9F71180099D2D9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		AFA34F562A9FAFAD0099D2D9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		AFCD91252B5D720B00083EE5 /* RightClickableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightClickableView.swift; sourceTree = "<group>"; };
 		AFE395802B544180001CEE65 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +200,7 @@
 		AF6C3EA22A9C1BF200B937E4 /* field */ = {
 			isa = PBXGroup;
 			children = (
+				AFCD91252B5D720B00083EE5 /* RightClickableView.swift */,
 				AF6C3EB02A9C2E2B00B937E4 /* TileView.swift */,
 				AF6C3EAE2A9C2A3A00B937E4 /* FieldView.swift */,
 			);
@@ -370,6 +373,7 @@
 				AF281B8B2AC8D2D60078C782 /* Constants.swift in Sources */,
 				AF6C3E6D2A9BA9E800B937E4 /* MinesweeperApp.swift in Sources */,
 				AF6C3EAF2A9C2A3A00B937E4 /* FieldView.swift in Sources */,
+				AFCD91262B5D720B00083EE5 /* RightClickableView.swift in Sources */,
 				AFA34F552A9F71180099D2D9 /* Settings.swift in Sources */,
 				AF6C3E992A9BAAA500B937E4 /* Field.swift in Sources */,
 				AFA34F572A9FAFAD0099D2D9 /* Color.swift in Sources */,

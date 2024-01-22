@@ -21,15 +21,22 @@ struct TileView: View, Hashable {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 31, height: 31)
                     .onTapGesture {
-                        if !self.game.finished {
-                            let _ = tile.toggle()
-                        }
+                        self.toggleTile(tile: tile)
                     }
                     .onLongPressGesture {
-                        if !self.game.finished && !tile.isToggled {
-                            tile.lock = !tile.lock
-                        }
+                        self.addFlag(tile: tile)
                     }
+                #if os(macOS)
+                RightClickableSwiftUIView() {type in
+                    switch(type) {
+                    case .leftClick:
+                        self.toggleTile(tile: tile)
+                    case .rightClick:
+                        self.addFlag(tile: tile)
+                    }
+                }
+                    .frame(width: 31, height: 31)
+                #endif
                 if tile.isLocked {
                     Text("🚩")
                 }
@@ -44,6 +51,18 @@ struct TileView: View, Hashable {
                     .fontWeight(.bold)
                     .foregroundColor(tile.color)
             }
+        }
+    }
+    
+    func toggleTile(tile: Tile) {
+        if !self.game.finished {
+            let _ = tile.toggle()
+        }
+    }
+    
+    func addFlag(tile: Tile) {
+        if !self.game.finished && !tile.isToggled {
+            tile.lock = !tile.lock
         }
     }
     
